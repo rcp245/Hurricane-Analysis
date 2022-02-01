@@ -20,8 +20,6 @@ damages = ['Damages not recorded', '100M', 'Damages not recorded', '40M', '27.9M
 deaths = [90,4000,16,3103,179,184,408,682,5,1023,43,319,688,259,37,11,2068,269,318,107,65,19325,51,124,17,1836,125,87,45,133,603,138,3057,74]
 
 # write your update damages function here:
-conversion = {"M": 1000000,
-              "B": 1000000000}
 def updated_damages(damage):
   damages_converted = []
   for dam in damage:
@@ -37,13 +35,16 @@ def updated_damages(damage):
       damages_converted.append(billi)
   return damages_converted
 
-print(updated_damages(damages))
-
-
-
 # write your construct hurricane dictionary function here:
+def construct_dictionary(names, months, years, winds, areas, damages, deaths):
+    hurricane_dictionary = {}
+    for i in range(0,len(names)):
+        hurricane_dictionary[names[i]] = {"Name": names[i], "Month": months[i], "Year": years[i], "Max Sustained Winds": winds[i], "Areas Affected": areas[i], "Damage": damages[i], "Deaths": deaths[i]}
+    return hurricane_dictionary
 
 
+new_damages = updated_damages(damages)
+hurricane_dictionary = construct_dictionary(names, months, years, max_sustained_winds, areas_affected, new_damages, deaths)
 
 
 
