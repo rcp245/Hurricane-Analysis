@@ -20,10 +20,24 @@ damages = ['Damages not recorded', '100M', 'Damages not recorded', '40M', '27.9M
 deaths = [90,4000,16,3103,179,184,408,682,5,1023,43,319,688,259,37,11,2068,269,318,107,65,19325,51,124,17,1836,125,87,45,133,603,138,3057,74]
 
 # write your update damages function here:
+conversion = {"M": 1000000,
+              "B": 1000000000}
+def updated_damages(damage):
+  damages_converted = []
+  for dam in damage:
+    if dam == "Damages not recorded":
+      damages_converted.append(dam)
+    elif "M" in dam:
+      mil = dam.strip("M")
+      milli = float(mil) * 1000000
+      damages_converted.append(milli)
+    else:
+      bil = dam.strip("B")
+      billi = float(bil) * 1000000000
+      damages_converted.append(billi)
+  return damages_converted
 
-
-
-
+print(updated_damages(damages))
 
 
 
